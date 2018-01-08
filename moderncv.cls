@@ -255,21 +255,26 @@
     }
 
 
+% http://latex.org/forum/viewtopic.php?t=12239
+\def\SplitMyMacro#1/#2{#2}
+    
+    
 % adds a social link to one's personal information (optional)
 % usage: \social[<optional type>][<optional url>]{<account name>}
 % where <optional type> should be either "linkedin", "xing", "twitter", "github", "gitlab" or "skype"
 \collectionnew{socials}
 \NewDocumentCommand{\social}{O{}O{}m}{%
   \ifthenelse{\equal{#2}{}}%
-    {%
-      \ifthenelse{\equal{#1}{linkedin}}{\collectionadd[linkedin]{socials}{\protect\httplink[#3]{www.linkedin.com/in/#3}}} {}%
-      \ifthenelse{\equal{#1}{xing}}    {\collectionadd[xing]{socials}    {\protect\httplink[#3]{www.xing.com/profile/#3}}}{}%
-      \ifthenelse{\equal{#1}{twitter}} {\collectionadd[twitter]{socials} {\protect\httplink[#3]{www.twitter.com/#3}}}     {}%
-      \ifthenelse{\equal{#1}{github}}  {\collectionadd[github]{socials}  {\protect\httplink[#3]{www.github.com/#3}}}      {}%
-      \ifthenelse{\equal{#1}{gitlab}}  {\collectionadd[gitlab]{socials}  {\protect\httplink[#3]{www.gitlab.com/#3}}}      {}%
-      \ifthenelse{\equal{#1}{skype}}   {\collectionadd[skype]{socials}   {#3}}                                            {}%
+  {%
+      \ifthenelse{\equal{#1}{linkedin}}     {\collectionadd[linkedin]{socials}     {\protect\httpslink[#3]{www.linkedin.com/in/#3}}}                 {}%
+      \ifthenelse{\equal{#1}{xing}}         {\collectionadd[xing]{socials}         {\protect\httpslink[#3]{www.xing.com/profile/#3}}}                {}%
+      \ifthenelse{\equal{#1}{twitter}}      {\collectionadd[twitter]{socials}      {\protect\httpslink[#3]{www.twitter.com/#3}}}                     {}%
+      \ifthenelse{\equal{#1}{github}}       {\collectionadd[github]{socials}       {\protect\httpslink[#3]{www.github.com/#3}}}                      {}%
+      \ifthenelse{\equal{#1}{gitlab}}       {\collectionadd[gitlab]{socials}       {\protect\httpslink[#3]{www.gitlab.com/#3}}}                      {}%
+      \ifthenelse{\equal{#1}{stackoverflow}}{\collectionadd[stackoverflow]{socials}{\protect\httpslink[\SplitMyMacro#3]{stackoverflow.com/users/#3}}}{}%
+      \ifthenelse{\equal{#1}{skype}}        {\collectionadd[skype]{socials}        {#3}}                                                             {}%
     }
-    {\collectionadd[#1]{socials}{\protect\httplink[#3]{#2}}}}
+    {\collectionadd[#1]{socials}{\protect\httpslink[#3]{#2}}}}
 
 % defines additional personal information (optional)
 % usage: \extrainfo{<text>}
@@ -285,31 +290,32 @@
 % symbols
 %--------
 % itemize labels (the struts were added to correct inter-item spacing (works for single line items, until a solution is found for multi-line ones...)
-\newcommand*{\labelitemi}          {\strut\textcolor{color1}{\large\rmfamily\textbullet}}% the \rmfamily is required to force Latin Modern fonts when using sans serif, as OMS/lmss/m/n is not defined and gets substituted by OMS/cmsy/m/n
-\newcommand*{\labelitemii}         {\strut\textcolor{color1}{\large\bfseries-}}
-\newcommand*{\labelitemiii}        {\strut\textcolor{color1}{\rmfamily\textperiodcentered}}% alternative: \textasteriskcentered; the \rmfamily is required to force Latin Modern fonts when using sans serif, as OMS/lmss/m/n is not defined and gets substituted by OMS/cmsy/m/n
-\newcommand*{\labelitemiv}         {\labelitemiii}
+\newcommand*{\labelitemi}               {\strut\textcolor{color1}{\large\rmfamily\textbullet}}% the \rmfamily is required to force Latin Modern fonts when using sans serif, as OMS/lmss/m/n is not defined and gets substituted by OMS/cmsy/m/n
+\newcommand*{\labelitemii}              {\strut\textcolor{color1}{\large\bfseries-}}
+\newcommand*{\labelitemiii}             {\strut\textcolor{color1}{\rmfamily\textperiodcentered}}% alternative: \textasteriskcentered; the \rmfamily is required to force Latin Modern fonts when using sans serif, as OMS/lmss/m/n is not defined and gets substituted by OMS/cmsy/m/n
+\newcommand*{\labelitemiv}              {\labelitemiii}
 
 % enumerate labels
-\renewcommand{\theenumi}           {\@arabic\c@enumi}
-\renewcommand{\theenumii}          {\@alph\c@enumii}
-\renewcommand{\theenumiii}         {\@roman\c@enumiii}
-\renewcommand{\theenumiv}          {\@Alph\c@enumiv}
+\renewcommand{\theenumi}                {\@arabic\c@enumi}
+\renewcommand{\theenumii}               {\@alph\c@enumii}
+\renewcommand{\theenumiii}              {\@roman\c@enumiii}
+\renewcommand{\theenumiv}               {\@Alph\c@enumiv}
 
 % other symbols
-\newcommand*{\listitemsymbol}      {\labelitemi~}
-\newcommand*{\addresssymbol}       {}
-\newcommand*{\mobilephonesymbol}   {}
-\newcommand*{\fixedphonesymbol}    {}
-\newcommand*{\faxphonesymbol}      {}
-\newcommand*{\emailsymbol}         {}
-\newcommand*{\homepagesymbol}      {}
-\newcommand*{\linkedinsocialsymbol}{}
-\newcommand*{\xingsocialsymbol}    {}
-\newcommand*{\twittersocialsymbol} {}
-\newcommand*{\githubsocialsymbol}  {}
-\newcommand*{\gitlabsocialsymbol}  {}
-\newcommand*{\skypesocialsymbol}   {}
+\newcommand*{\listitemsymbol}           {\labelitemi~}
+\newcommand*{\addresssymbol}            {}
+\newcommand*{\mobilephonesymbol}        {}
+\newcommand*{\fixedphonesymbol}         {}
+\newcommand*{\faxphonesymbol}           {}
+\newcommand*{\emailsymbol}              {}
+\newcommand*{\homepagesymbol}           {}
+\newcommand*{\linkedinsocialsymbol}     {}
+\newcommand*{\xingsocialsymbol}         {}
+\newcommand*{\twittersocialsymbol}      {}
+\newcommand*{\githubsocialsymbol}       {}
+\newcommand*{\gitlabsocialsymbol}       {}
+\newcommand*{\skypesocialsymbol}        {}
+\newcommand*{\stackoverflowsocialsymbol}{}
 
 % other
 %------
@@ -507,6 +513,13 @@
     {\href{http://#2}{#2}}%
     {\href{http://#2}{#1}}}
 
+% makes an https hyperlink
+% usage: \httpslink[optional text]{link}
+\newcommand*{\httpslink}[2][]{%
+  \ifthenelse{\equal{#1}{}}%
+    {\href{https://#2}{#2}}%
+    {\href{https://#2}{#1}}}
+  
 % makes an email hyperlink
 % usage: \emaillink[optional text]{link}
 \newcommand*{\emaillink}[2][]{%
