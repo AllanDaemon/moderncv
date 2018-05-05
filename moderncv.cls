@@ -265,7 +265,7 @@
     
 % adds a social link to one's personal information (optional)
 % usage: \social[<optional type>][<optional url>]{<account name>}
-% where <optional type> should be either "linkedin", "xing", "twitter", "github", "gitlab" or "skype"
+% where <optional type> should be either "linkedin", "xing", "twitter", "github", "gitlab", "bitbucket" or "skype"
 \collectionnew{socials}
 \NewDocumentCommand{\social}{O{}O{}m}{%
   \ifthenelse{\equal{#2}{}}%
@@ -275,10 +275,11 @@
       \ifthenelse{\equal{#1}{twitter}}      {\collectionadd[twitter]{socials}      {\protect\httpslink[#3]{www.twitter.com/#3}}}                     {}%
       \ifthenelse{\equal{#1}{github}}       {\collectionadd[github]{socials}       {\protect\httpslink[#3]{www.github.com/#3}}}                      {}%
       \ifthenelse{\equal{#1}{gitlab}}       {\collectionadd[gitlab]{socials}       {\protect\httpslink[#3]{www.gitlab.com/#3}}}                      {}%
+      \ifthenelse{\equal{#1}{bitbucket}}    {\collectionadd[bitbucket]{socials}    {\protect\httpslink[#3]{www.bitbucket.org/#3}}}                   {}%
       \ifthenelse{\equal{#1}{stackoverflow}}{\collectionadd[stackoverflow]{socials}{\protect\httpslink[\SplitMyMacro#3]{stackoverflow.com/users/#3}}}{}%
       \ifthenelse{\equal{#1}{skype}}        {\collectionadd[skype]{socials}        {#3}}                                                             {}%
-    }
-    {\collectionadd[#1]{socials}{\protect\httpslink[#3]{#2}}}}
+  }
+  {\collectionadd[#1]{socials}{\protect\httpslink[#3]{#2}}}}
 
 % defines additional personal information (optional)
 % usage: \extrainfo{<text>}
@@ -319,6 +320,7 @@
 \newcommand*{\twittersocialsymbol}      {}
 \newcommand*{\githubsocialsymbol}       {}
 \newcommand*{\gitlabsocialsymbol}       {}
+\newcommand*{\bitbucketsocialsymbol}    {}
 \newcommand*{\skypesocialsymbol}        {}
 \newcommand*{\stackoverflowsocialsymbol}{}
 
