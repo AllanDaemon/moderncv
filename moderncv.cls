@@ -161,7 +161,7 @@
 
 % reduced list spacing
 % package providing hooks into lists
-%   originally developped by Jakob Schiotz (see http://dcwww.camd.dtu.dk/~schiotz/comp/LatexTips/tweaklist.sty)
+%   originally developed by Jakob Schiotz (see http://dcwww.camd.dtu.dk/~schiotz/comp/LatexTips/tweaklist.sty)
 %   modified and distributed with moderncv(not available otherwise on ctan)
 \RequirePackage{tweaklist}
 \renewcommand*{\itemhook}{%
@@ -241,7 +241,7 @@
 \newcommand*{\born}[1]{\def\@born{#1}}
 
 % defines one's email (optional)
-% usage: \email{<email adress>}
+% usage: \email{<email address>}
 \newcommand*{\email}[1]{\def\@email{#1}}
 
 % defines one's home page (optional)
@@ -505,7 +505,7 @@
 \newcommand*{\cvitemwithcomment}[4][.25em]{}
 
 % makes a generic hyperlink
-% usage: \link[optional text]{link}
+% usage: \link[optional text]{URL}
 \newcommand*{\link}[2][]{%
   \ifthenelse{\equal{#1}{}}%
     {\href{#2}{#2}}%
